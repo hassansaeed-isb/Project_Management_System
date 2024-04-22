@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Project List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      padding: 20px;
+    }
+    .project-card {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <%- include('navbar') %>
+  <div class="container">
+    <h2>Project List</h2>
+    <div id="projectList">
+      <% projects.forEach(function(project){ %>
+        <div class="card project-card">
+          <div class="card-body">
+            <h5 class="card-title"><%= project.name %></h5>
+            <p class="card-text"><%= project.description %></p>
+            <p class="card-text">Team Lead: <%= project.team_lead %></p>
+            <p class="card-text">Status: <%= project.status %></p>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</body>
+</html>

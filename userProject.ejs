@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Project List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      padding: 20px;
+      background-image: url("https://wallpapercave.com/wp/wp6903392.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #fff;
+    }
+    .project-card {
+      margin-bottom: 20px;
+      border: 1px solid #1a1d3b;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      background-color: #1a1d3b;
+    }
+    .project-card .card-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+    }
+    .project-card .card-text {
+      margin-bottom: 5px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <%- include('navbar') %>
+  <div class="container">
+    <h2>User Project List</h2>
+    <div id="projectList">
+      <% projects.forEach(function(project){ %>
+        <div class="card project-card">
+          <div class="card-body">
+            <h5 class="card-title"><%= project.name %></h5>
+            <p class="card-text"><%= project.description %></p>
+            <p class="card-text">Team Lead: <%= project.team_lead %></p>
+            <p class="card-text">Status: <%= project.status %></p>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</body>
+</html>

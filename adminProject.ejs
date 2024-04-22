@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Project List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      padding: 20px;
+      background-color: #11142b;
+      background-image: url("https://wallpapercave.com/wp/wp6903392.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #fff;
+    }
+    .project-card {
+      margin-bottom: 20px;
+      background-color: rgba(23, 42, 69, 0.8);
+      border-radius: 5px;
+      padding: 20px;
+    }
+    .project-card .card-title {
+      color: #fff;
+    }
+    .project-card .card-text {
+      color: #ccc;
+    }
+    .add-project-card {
+      margin-bottom: 20px;
+      background-color: rgba(23, 42, 69, 0.8);
+      border-radius: 5px;
+      padding: 20px;
+      border: 2px dashed #007bff;
+    }
+    .add-project-card .card-title {
+      color: #fff;
+    }
+    .add-project-card label {
+      color: #fff;
+    }
+    .add-project-card .form-control {
+      background-color: #1c2947;
+      color: #fff;
+      border-color: #1c2947;
+    }
+    .add-project-card .btn-success {
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+    .add-project-card .btn-success:hover {
+      background-color: #218838;
+      border-color: #218838;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    .btn-primary:hover {
+      background-color: #0069d9;
+      border-color: #0069d9;
+    }
+    .btn-danger {
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+    .btn-danger:hover {
+      background-color: #c82333;
+      border-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+  <%- include('navbar') %>
+  <div class="container">
+    <h2 class="heading-white">Admin Project List</h2>
+    <div id="projectList">
+      <% projects.forEach(function(project){ %>
+        <div class="card project-card">
+          <div class="card-body">
+            <h5 class="card-title"><%= project.name %></h5>
+            <p class="card-text"><%= project.description %></p>
+            <p class="card-text">Team Lead: <%= project.team_lead %></p>
+            <p class="card-text">Status: <%= project.status %></p>
+            <a href="/admin/edit/<%= project.id %>" class="btn btn-primary">Edit</a>
+            <form action="/admin/delete" method="post" style="display: inline-block;">
+              <input type="hidden" name="id" value="<%= project.id %>">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </div>
+        </div>
+      <% }); %>
+      <% if (userType === 'admin') { %>
+      <div class="card add-project-card">
+        <div class="card-body">
+          <h5 class="card-title">Add New Project</h5>
+          <form action="/admin/add" method="post">
+          <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description" name="description" required>
+          </div>
+          <div class="form-group">
+          <label for="team_lead">Team Lead</label>
+          <input type="text" class="form-control" id="team_lead" name="team_lead" required>
+          </div>
+          <div class="form-group">
+          <label for="status">Status</label>
+          <input type="text" class="form-control" id="status" name="status" required>
+          </div>
+          <button type="submit" class="btn btn-success">Add Project</button>
+          </form>
+          </div>
+          </div>
+          <% } %>
+          </div>
+          
+            </div>
+          </body>
+          </html>

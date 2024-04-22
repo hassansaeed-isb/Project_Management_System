@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Board</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      padding: 20px;
+      background-color: #11142b;
+      background-image: url('https://wallpapercave.com/wp/wp6903392.jpg');
+      background-size: cover;
+      color: #fff;
+    }
+    .board-card {
+      margin-bottom: 20px;
+      border: 1px solid #1a1d3b;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      background-color: #1a1d3b;
+    }
+    .board-card .card-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+    }
+    .board-card .card-text {
+      margin-bottom: 5px;
+      color: #ccc;
+    }
+    .btn-back {
+      margin-bottom: 20px;
+      background-color: #394186;
+      color: #fff;
+      border: none;
+      display: none;
+    }
+    .btn-back:hover {
+      background-color: #5260a8;
+    }
+  </style>
+</head>
+<body>
+  <%- include('navbar') %>
+  <div class="container">
+    <h2>Board</h2>
+    <a href="/project" class="btn btn-primary btn-back">Back to Projects</a>
+    <div id="boardList">
+      <% boards.forEach(function(board){ %>
+        <div class="card board-card">
+          <div class="card-body">
+            <h5 class="card-title"><%= board.name %></h5>
+            <p class="card-text">Project ID: <%= board.project_id %></p>
+            <p class="card-text">Filters: <%= board.filters %></p>
+            <p class="card-text">Columns: <%= board.columns %></p>
+            <p class="card-text">Sort Order: <%= board.sort_order %></p>
+            <p class="card-text">Team Member Access: <%= board.team_member_access %></p>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</body>
+</html>

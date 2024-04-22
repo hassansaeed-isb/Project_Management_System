@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Project Issues</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      padding: 20px;
+      background-color: #11142b;
+      background-image: url('https://wallpapercave.com/wp/wp6903392.jpg');
+      background-size: cover;
+      color: #fff;
+    }
+    .issue-card {
+      margin-bottom: 20px;
+      border: 1px solid #1a1d3b;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      background-color: #1a1d3b;
+    }
+    .issue-card .card-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+    }
+    .issue-card .card-text {
+      margin-bottom: 5px;
+      color: #ccc;
+    }
+    .btn-back {
+      margin-bottom: 20px;
+      background-color: #394186;
+      color: #fff;
+      border: none;
+      display: none;
+    }
+    .btn-back:hover {
+      background-color: #5260a8;
+    }
+  </style>
+</head>
+<body>
+  <%- include('navbar') %>
+  <div class="container">
+    <h2>Project Issues</h2>
+    <a href="/project" class="btn btn-primary btn-back">Back to Projects</a>
+    <div id="issueList">
+      <% issues.forEach(function(issue){ %>
+        <div class="card issue-card">
+          <div class="card-body">
+            <h5 class="card-title"><%= issue.title %></h5>
+            <p class="card-text"><%= issue.description %></p>
+            <p class="card-text">Status: <%= issue.status %></p>
+            <p class="card-text">Priority: <%= issue.priority %></p>
+            <p class="card-text">Assignee ID: <%= issue.assignee_id %></p>
+            <p class="card-text">Reporter ID: <%= issue.reporter_id %></p>
+            <p class="card-text">Creation Date: <%= issue.creation_date %></p>
+            <p class="card-text">Due Date: <%= issue.due_date %></p>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</body>
+</html>
